@@ -1,0 +1,54 @@
+@import "constants";
+
+:host {
+  display: block;
+  margin: 20px auto;
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 2px auto;
+  padding: $spacing-xxs;
+  background-color: $gray10;
+}
+
+.book--title {
+  font-weight: 500;
+  color: $gray80;
+  margin-bottom: $spacing-xs;
+}
+
+.book--content {
+  display: flex;
+  flex: 1;
+}
+
+.book--content--cover {
+  margin-right: $spacing-xxs;
+}
+
+.book--content--info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+
+  > div {
+    margin-bottom: $spacing-xxs;
+  }
+
+  > div:last-child {
+    margin: 0;
+    flex: 1;
+    position: relative;
+    padding-bottom: $spacing-lg;
+
+    button {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}

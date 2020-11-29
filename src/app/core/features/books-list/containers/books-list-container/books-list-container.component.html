@@ -1,0 +1,5 @@
+<app-books-list [books]="books$ | async"
+                [form]="searchForm"
+                (addBook)="addBookToReadingList($event)"
+                (showExample)="searchExample()">
+</app-books-list>

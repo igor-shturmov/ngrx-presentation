@@ -1,0 +1,32 @@
+<mat-drawer-container class="app-container" [hasBackdrop]="true">
+  <mat-drawer-content>
+    <header class="header">
+      <div class="header--content">
+        <h1>Books App</h1>
+        <div>
+          <button mat-button
+                  (click)="drawer.toggle()">
+            Reading List
+            <app-books-total-count-container></app-books-total-count-container>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <app-books-list-container></app-books-list-container>
+    </main>
+  </mat-drawer-content>
+  <mat-drawer #drawer mode="over" position="end">
+    <div class="reading-list-container">
+      <h2>
+        My Reading List
+        <button mat-icon-button (click)="drawer.close()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </h2>
+      <div class="reading-list-content">
+        <app-books-reading-list-container></app-books-reading-list-container>
+      </div>
+    </div>
+  </mat-drawer>
+</mat-drawer-container>
