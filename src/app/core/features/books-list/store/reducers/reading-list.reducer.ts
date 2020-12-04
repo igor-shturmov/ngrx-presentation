@@ -18,7 +18,8 @@ export interface ReadingListPartialState {
 // provides method for creating an adapter for using Entity API
 // take selectId method if entity don't have id by itself, and sorting function, but it faster without it
 export const readingListAdapter: EntityAdapter<ReadingListItem> = createEntityAdapter<ReadingListItem>({
-  selectId: item => item.bookId
+  selectId: item => item.bookId,
+  sortComparer: false
 });
 
 // create an initial state, take an object of initial data
