@@ -19,4 +19,12 @@ export class BookDetailsComponent {
 
   constructor(private store: BookStore) {
   }
+
+  addToList(b: Book): void {
+    this.store.addBookToReadingList(b);
+  }
+
+  removeFromList(idx: string): void {
+    this.store.removeBookFromReadingList(idx);
+  }
 }

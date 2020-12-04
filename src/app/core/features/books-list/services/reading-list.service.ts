@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
 import { Book, ReadingListItem } from '../interfaces/book';
 import { Observable, of } from 'rxjs';
-
-const KEY = '[Books API] Reading List';
+import { READING_LIST_KEY } from '../utils/constants';
 
 @Injectable({ providedIn: 'root' })
 export class ReadingListService {
 
-  private readonly storage = new StorageService<ReadingListItem[]>(KEY, []);
+  private readonly storage = new StorageService<ReadingListItem[]>(READING_LIST_KEY, []);
 
   getList(): Observable<ReadingListItem[]> {
     return of(this.storage.read());

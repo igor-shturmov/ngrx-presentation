@@ -34,7 +34,8 @@ const initHandler = (state: ReadingListState): ReadingListState => ({
 });
 
 // using CRUD method for setting all books that already in list
-const loadReadingListSuccessHandler = (state: ReadingListState, { payload }): ReadingListState => readingListAdapter.setAll(payload, {
+const loadReadingListSuccessHandler = (state: ReadingListState,
+                                       { payload }): ReadingListState => readingListAdapter.setAll(payload, {
   ...state,
   loaded: true
 });
