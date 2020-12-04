@@ -9,6 +9,10 @@ import {
 } from '../reducers/reading-list.reducer';
 import { Book, ReadingListItem, Books } from '../../interfaces/book';
 
+export interface ReadingListBook extends Book, Omit<ReadingListItem, 'bookId'> {
+  isAdded: boolean;
+}
+
 export const getReadingListState = createFeatureSelector<
   ReadingListPartialState,
   ReadingListState
@@ -25,10 +29,6 @@ export const getReadingListEntities = createSelector(
   selectEntities
 );
 
-export interface ReadingListBook extends Book, Omit<ReadingListItem, 'bookId'> {
-  isAdded: boolean;
-}
-
 export const getAllBooks = createSelector<
   BooksPartialState & ReadingListPartialState,
   Books,
@@ -39,5 +39,4 @@ export const getAllBooks = createSelector<
 });
 
 export const getReadingList = createSelector(getReadingListState, selectAll);
-
 export const getTotalUnread = createSelector(getReadingListState, selectTotal);

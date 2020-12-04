@@ -15,10 +15,13 @@ export interface ReadingListPartialState {
   readonly [READING_LIST_FEATURE_KEY]: ReadingListState;
 }
 
+// provides method for creating an adapter for using Entity API
+// take selectId method if entity don't have id by itself, and sorting function, but it faster without it
 export const readingListAdapter: EntityAdapter<ReadingListItem> = createEntityAdapter<ReadingListItem>({
   selectId: item => item.bookId
 });
 
+// create an initial state, take an object of initial data
 export const initialState: ReadingListState = readingListAdapter.getInitialState({
   loaded: false,
   error: null
@@ -30,6 +33,7 @@ const initHandler = (state: ReadingListState): ReadingListState => ({
   error: null
 });
 
+// using CRUD method for setting all books that already in list
 const loadReadingListSuccessHandler = (state: ReadingListState, { payload }): ReadingListState => readingListAdapter.setAll(payload, {
   ...state,
   loaded: true
@@ -40,6 +44,7 @@ const loadReadingListErrorHandler = (state: ReadingListState, { payload }): Read
   error: payload
 });
 
+// using CRUD methods for adding and delete single book from list
 const addToReadingListHandler = (state, { payload }) => readingListAdapter.addOne({ bookId: payload.id, ...payload }, state);
 const removeFromReadingListHandler = (state, { payload }) => readingListAdapter.removeOne(payload.bookId, state);
 
